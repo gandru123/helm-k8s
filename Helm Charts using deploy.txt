@@ -1,0 +1,25 @@
+Helm Charts using deploy:
+
+
+step-1: login one instance/vm and sudo apt update
+step-2: install aws cli and aws configure---->give access key and secret key
+step-3: install kubectl
+step-4: install eksctl and eksctl create cluster --name my-cluster --region ap-south-1 --node-type  m7i-flex.large(creating cluster)
+step-3: install helm charts and helm create <any-name:myblue>
+        a. go to templates and delete unnecessary file and modifiy the deploy and svc.yml files
+        b. one step back to templates and edit values yml file
+        c. kubectl create ns <any-name>
+        d. kubectl config set-context --current --namespace=prod
+        e. helm install myfirstapp myblue
+        f. kubectl get po and kubectl get all
+        g. helm list
+step-5: before create chart and after release
+
+step-6:roll on
+helm upgrade <release-name> <chart-name> --reuse-values --set <key>=<value>
+
+helm upgrade myfirst myblue --reuse-values --set myimage=longflew/ingress:REDPAGE
+
+step-7:roll back
+ helm history <relesase-name>
+ helm rollback <release-name> <version>
